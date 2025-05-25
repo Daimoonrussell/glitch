@@ -1,5 +1,5 @@
-import { Section } from "../layout/Section";
-import { FAQAccordion } from "../faq/FAQAccordion";
+import { FAQAccordion } from '../faq/FAQAccordion';
+import { Section } from '../layout/Section';
 
 const VerticalFeatures = () => (
   <>
@@ -8,14 +8,14 @@ const VerticalFeatures = () => (
       <div
         id="kim-jestesmy"
         className="animate-fade-in-section mx-auto max-w-3xl px-4 text-center"
-        style={{ animationDelay: "0.05s" }}
+        style={{ animationDelay: '0.05s' }}
       >
         <p className="mb-4 text-xl text-white">
           <span className="font-bold text-primary-400">GLITCHSTUDIO</span> to
           kolektyw projektantów, strategów i ludzi z obsesją na punkcie jakości.
           <br />
           <span className="text-primary-300">
-            Nie jesteśmy korpo. Nie jesteśmy agencją "full service".
+            Nie jesteśmy korpo. Nie jesteśmy agencją &quot;full service&quot;.
           </span>
           <br />
           Jesteśmy zakłóceniem w nudnym świecie komunikacji wizualnej.
@@ -31,7 +31,7 @@ const VerticalFeatures = () => (
     <Section yPadding="py-16" title="🛠️ Nasze podejście">
       <div
         className="animate-fade-in-section mx-auto grid max-w-4xl grid-cols-1 gap-6 px-4 text-center sm:grid-cols-2"
-        style={{ animationDelay: "0.1s" }}
+        style={{ animationDelay: '0.1s' }}
       >
         <div className="flex flex-col items-center rounded-xl border-l-4 border-primary-500 bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-lg">
           <span className="font-bold text-primary-300">💡 Słuchamy</span>
@@ -58,7 +58,7 @@ const VerticalFeatures = () => (
       </div>
       <p
         className="animate-fade-in-section mt-8 text-center text-lg text-gray-300"
-        style={{ animationDelay: "0.15s" }}
+        style={{ animationDelay: '0.15s' }}
       >
         Wierzymy w brzydkie szkice, głośne kolory i odważne pomysły.
         <br />
@@ -71,7 +71,7 @@ const VerticalFeatures = () => (
       <div
         id="oferta"
         className="animate-fade-in-section mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 text-center md:grid-cols-3"
-        style={{ animationDelay: "0.2s" }}
+        style={{ animationDelay: '0.2s' }}
       >
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
           <div className="mb-2 text-3xl">🧠</div>
@@ -140,7 +140,7 @@ const VerticalFeatures = () => (
     <Section yPadding="py-16" title="🤝 Zaufali nam">
       <div
         className="animate-fade-in-section mx-auto max-w-3xl px-4 text-center"
-        style={{ animationDelay: "0.25s" }}
+        style={{ animationDelay: '0.25s' }}
       >
         <p className="mb-4 text-lg text-white">
           Pracowaliśmy z twórcami, startupami, fundacjami i szalonymi pomysłami,
@@ -169,7 +169,7 @@ const VerticalFeatures = () => (
       <div
         id="proces"
         className="animate-fade-in-section mx-auto grid max-w-4xl grid-cols-1 items-stretch gap-6 px-4 text-center md:grid-cols-5"
-        style={{ animationDelay: "0.3s" }}
+        style={{ animationDelay: '0.3s' }}
       >
         <div className="flex min-h-[220px] flex-col justify-between rounded-xl border-t-4 border-primary-500 bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-lg">
           <div>
@@ -230,32 +230,32 @@ const VerticalFeatures = () => (
       <div
         id="faq"
         className="animate-fade-in-section mx-auto grid max-w-3xl grid-cols-1 gap-6 px-4 text-center"
-        style={{ animationDelay: "0.35s" }}
+        style={{ animationDelay: '0.35s' }}
       >
         <div
           className="animate-fade-in-section"
-          style={{ animationDelay: "0.4s" }}
+          style={{ animationDelay: '0.4s' }}
         >
           <FAQAccordion
             items={[
               {
-                question: "Czy mogę zlecić tylko logo/stronę/tekst?",
+                question: 'Czy mogę zlecić tylko logo/stronę/tekst?',
                 answer:
-                  "Tak. Ale musimy być pewni, że nie robimy tego w próżni. Zadajemy dużo pytań.",
+                  'Tak. Ale musimy być pewni, że nie robimy tego w próżni. Zadajemy dużo pytań.',
               },
               {
-                question: "Ile to kosztuje?",
+                question: 'Ile to kosztuje?',
                 answer:
-                  "Minimalny budżet projektowy to 2 000 zł. Typowy zakres to 4–10 tys. za projekt kompleksowy.",
+                  'Minimalny budżet projektowy to 2 000 zł. Typowy zakres to 4–10 tys. za projekt kompleksowy.',
               },
               {
-                question: "Jak długo to trwa?",
+                question: 'Jak długo to trwa?',
                 answer:
-                  "Małe projekty: 1–2 tygodnie. Większe: 3–6 tygodni. W ekspresie też działamy, ale to kosztuje.",
+                  'Małe projekty: 1–2 tygodnie. Większe: 3–6 tygodni. W ekspresie też działamy, ale to kosztuje.',
               },
               {
-                question: "Czy mogę pogadać zanim zdecyduję?",
-                answer: "Zawsze. Wystarczy napisać — nawet na Instagramie.",
+                question: 'Czy mogę pogadać zanim zdecyduję?',
+                answer: 'Zawsze. Wystarczy napisać — nawet na Instagramie.',
               },
             ]}
           />
@@ -268,7 +268,7 @@ const VerticalFeatures = () => (
       <div
         id="kontakt"
         className="animate-fade-in-section mx-auto max-w-2xl px-4 text-center"
-        style={{ animationDelay: "0.45s" }}
+        style={{ animationDelay: '0.45s' }}
       >
         <p className="mb-4 text-lg text-white">
           Masz pomysł? Masz problem? A może po prostu chcesz pogadać o swojej

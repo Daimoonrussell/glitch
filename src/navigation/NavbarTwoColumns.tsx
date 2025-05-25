@@ -1,6 +1,6 @@
-import Link from "next/link";
-import type { ReactNode } from "react";
-import { useState } from "react";
+import Link from 'next/link';
+import type { ReactNode } from 'react';
+import { useState } from 'react';
 
 type INavbarProps = {
   logo: ReactNode;
@@ -13,7 +13,7 @@ const NavbarTwoColumns = (props: INavbarProps) => {
     <nav className="w-full">
       <div className="flex w-full items-center justify-between px-4 py-2">
         {/* Logo: zawsze po lewej */}
-        <div className="flex-shrink-0">
+        <div className="shrink-0">
           <Link href="/">{props.logo}</Link>
         </div>
         {/* Hamburger tylko na mobile, po prawej */}
@@ -21,11 +21,11 @@ const NavbarTwoColumns = (props: INavbarProps) => {
           <button
             className="text-primary-400 focus:outline-none"
             onClick={() => setOpen(!open)}
-            aria-label={open ? "Zamknij menu" : "Otwórz menu"}
+            aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
           >
             {open ? (
               <svg
-                className="h-8 w-8"
+                className="size-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -39,7 +39,7 @@ const NavbarTwoColumns = (props: INavbarProps) => {
               </svg>
             ) : (
               <svg
-                className="h-8 w-8"
+                className="size-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -64,9 +64,9 @@ const NavbarTwoColumns = (props: INavbarProps) => {
       {/* Mobile menu: slide-down pod navem */}
       <div
         className={`w-full overflow-hidden transition-all duration-300 sm:hidden ${
-          open ? "max-h-96 py-4" : "max-h-0 py-0"
+          open ? 'max-h-96 py-4' : 'max-h-0 py-0'
         }`}
-        style={{ background: "rgba(17,17,17,0.98)" }}
+        style={{ background: 'rgba(17,17,17,0.98)' }}
       >
         <ul className="flex flex-col items-center gap-y-6 text-xl font-medium text-gray-100">
           {props.children}

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState } from 'react';
 
 export type FAQItem = {
   question: string;
@@ -22,14 +22,14 @@ export const FAQAccordion = ({ items }: { items: FAQItem[] }) => {
           >
             <span>{item.question}</span>
             <span
-              className={`ml-4 transform transition-transform duration-300 ${openIndex === idx ? "rotate-45" : "rotate-0"}`}
+              className={`ml-4 transition-transform duration-300${openIndex === idx ? 'rotate-45' : 'rotate-0'}`}
             >
               +
             </span>
           </button>
           <div
-            className={`overflow-hidden transition-all duration-300 ${openIndex === idx ? "mt-2 max-h-40 opacity-100" : "mt-0 max-h-0 opacity-0"}`}
-            style={{ pointerEvents: openIndex === idx ? "auto" : "none" }}
+            className={`overflow-hidden transition-all duration-300 ${openIndex === idx ? 'mt-2 max-h-40 opacity-100' : 'mt-0 max-h-0 opacity-0'}`}
+            style={{ pointerEvents: openIndex === idx ? 'auto' : 'none' }}
           >
             <div className="pb-2 text-base text-gray-100">{item.answer}</div>
           </div>

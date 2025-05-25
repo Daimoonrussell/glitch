@@ -1,9 +1,8 @@
-import Link from "next/link";
-import { useState } from "react";
+import Link from 'next/link';
+import { useState } from 'react';
 
-import { Background } from "../background/Background";
-import { Section } from "../layout/Section";
-import { HeroParticles } from "./HeroParticles";
+import { Background } from '../background/Background';
+import { Section } from '../layout/Section';
 
 const Hero = () => {
   const [open, setOpen] = useState(false);
@@ -13,7 +12,7 @@ const Hero = () => {
       {/* Tło wideo na całą szerokość monitora, tylko pod hero, nie fixed! */}
       <div className="relative min-h-[600px] w-screen max-w-none overflow-hidden">
         <video
-          className="absolute inset-0 z-0 h-full min-h-[600px] w-full object-cover"
+          className="absolute inset-0 z-0 size-full min-h-[600px] object-cover"
           src="/assets/images/hero.webm"
           autoPlay
           loop
@@ -23,15 +22,13 @@ const Hero = () => {
           aria-hidden="true"
         />
         {/* Subtelne particles nad filmem, pod treścią hero */}
-        <div className="pointer-events-none absolute inset-0 z-10 h-full w-full">
-          <HeroParticles />
-        </div>
+        {/* HeroParticles usunięte na stałe */}
         {/* Hero content + navbar na wierzchu */}
         <div className="relative z-20">
           {/* Sticky glassmorphism navbar na całą szerokość, content nav ograniczony do max-w-screen-lg */}
           <nav className="sticky left-0 top-0 z-50 w-screen border-b border-white/10 bg-white/10 shadow-lg backdrop-blur-lg transition-all duration-300">
             <div className="mx-auto flex w-full max-w-screen-lg items-center justify-between px-2 py-4">
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <Link href="/">
                   <img
                     src="/assets/images/logo.png"
@@ -44,11 +41,11 @@ const Hero = () => {
                 <button
                   className="text-primary-400 focus:outline-none"
                   onClick={() => setOpen(!open)}
-                  aria-label={open ? "Zamknij menu" : "Otwórz menu"}
+                  aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
                 >
                   {open ? (
                     <svg
-                      className="h-8 w-8"
+                      className="size-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -62,7 +59,7 @@ const Hero = () => {
                     </svg>
                   ) : (
                     <svg
-                      className="h-8 w-8"
+                      className="size-8"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"
@@ -140,7 +137,7 @@ const Hero = () => {
                   />
                   <span
                     className="hero-brutal animate-hero-glitch-gradient mt-2 block text-5xl font-extrabold uppercase leading-tight tracking-tight drop-shadow-lg md:text-6xl md:leading-[1.05]"
-                    style={{ letterSpacing: "0.04em", color: "#fff" }}
+                    style={{ letterSpacing: '0.04em', color: '#fff' }}
                   >
                     Nowoczesne,
                     <br />
@@ -149,7 +146,7 @@ const Hero = () => {
                 </div>
                 <div
                   className="mb-4 text-xl font-semibold tracking-widest text-primary-300"
-                  style={{ fontFamily: "Syne, Arial, Helvetica, sans-serif" }}
+                  style={{ fontFamily: 'Syne, Arial, Helvetica, sans-serif' }}
                 >
                   Design, który glitchuje algorytmy i zostaje w głowie.
                   <br />
@@ -164,7 +161,7 @@ const Hero = () => {
                           Zacznijmy zakłócenie
                         </span>
                         <span
-                          className="animate-glitch pointer-events-none absolute left-0 top-0 z-20 h-full w-full opacity-0 mix-blend-screen group-hover:opacity-100"
+                          className="animate-glitch pointer-events-none absolute left-0 top-0 z-20 size-full opacity-0 mix-blend-screen group-hover:opacity-100"
                           aria-hidden="true"
                         ></span>
                       </div>
@@ -177,7 +174,7 @@ const Hero = () => {
                           Poznaj naszą ofertę
                         </span>
                         <span
-                          className="animate-glitch pointer-events-none absolute left-0 top-0 z-20 h-full w-full opacity-0 mix-blend-screen group-hover:opacity-100"
+                          className="animate-glitch pointer-events-none absolute left-0 top-0 z-20 size-full opacity-0 mix-blend-screen group-hover:opacity-100"
                           aria-hidden="true"
                         ></span>
                       </div>
