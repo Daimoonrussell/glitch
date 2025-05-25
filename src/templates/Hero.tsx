@@ -76,19 +76,29 @@ const Hero = () => {
               </div>
               <ul className="navbar ml-auto hidden flex-row items-center gap-x-8 text-base font-semibold tracking-wider text-gray-100 sm:flex">
                 <li>
-                  <Link href="#kim-jestesmy">O nas</Link>
+                  <Link href="#kim-jestesmy" className="nav-link-ux">
+                    O nas
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#oferta">Oferta</Link>
+                  <Link href="#oferta" className="nav-link-ux">
+                    Oferta
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#proces">Proces</Link>
+                  <Link href="#proces" className="nav-link-ux">
+                    Proces
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#faq">FAQ</Link>
+                  <Link href="#faq" className="nav-link-ux">
+                    FAQ
+                  </Link>
                 </li>
                 <li>
-                  <Link href="#kontakt">Kontakt</Link>
+                  <Link href="#kontakt" className="nav-link-ux">
+                    Kontakt
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -156,7 +166,7 @@ const Hero = () => {
                 <div className="mb-8 flex flex-col justify-center gap-3 sm:flex-row">
                   <Link href="#kontakt">
                     <div className="group relative">
-                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-700 px-6 py-3 font-bold text-white shadow-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-400/40 group-hover:scale-105 group-hover:border-primary-300">
+                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-700 px-6 py-3 font-bold text-white shadow-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-400/40 group-hover:scale-105 group-hover:border-primary-300 will-change-transform active:scale-95">
                         <span className="relative z-10">
                           Zacznijmy zakłócenie
                         </span>
@@ -169,7 +179,7 @@ const Hero = () => {
                   </Link>
                   <Link href="#oferta">
                     <div className="group relative">
-                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gray-900/80 px-6 py-3 font-bold text-primary-300 shadow-lg backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-400/40 group-hover:scale-105 group-hover:border-primary-300 group-hover:bg-gray-800/90">
+                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gray-900/80 px-6 py-3 font-bold text-primary-300 shadow-lg backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-400/40 group-hover:scale-105 group-hover:border-primary-300 group-hover:bg-gray-800/90 will-change-transform active:scale-95">
                         <span className="relative z-10">
                           Poznaj naszą ofertę
                         </span>

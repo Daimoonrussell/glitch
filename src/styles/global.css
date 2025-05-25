@@ -742,3 +742,35 @@ section,
   animation: hero-glitch-gradient 2.8s linear infinite;
   position: relative;
 }
+
+.nav-link-ux {
+  position: relative;
+  transition: color 0.2s cubic-bezier(0.4,0,0.2,1);
+}
+.nav-link-ux::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #a21caf 0%, #38bdf8 100%);
+  opacity: 0;
+  transform: translateY(4px) scaleX(0.7);
+  transition: opacity 0.25s, transform 0.25s;
+  border-radius: 2px;
+}
+.nav-link-ux:hover,
+.nav-link-ux:focus {
+  color: #38bdf8;
+}
+.nav-link-ux:hover::after,
+.nav-link-ux:focus::after {
+  opacity: 1;
+  transform: translateY(0) scaleX(1);
+}
+
+/* Mikrointerakcje dla przycisków (tap/hover) są już w Tailwind, ale można dodać płynniejsze przejścia: */
+.btn-glitch {
+  transition: box-shadow 0.25s, border-color 0.25s, background 0.25s, transform 0.15s cubic-bezier(0.4,0,0.2,1);
+}
