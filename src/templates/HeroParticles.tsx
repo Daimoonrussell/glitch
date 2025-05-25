@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef } from "react";
 
 // Subtelny animowany efekt tła: poruszające się kropki (particles)
 export const HeroParticles = () => {
@@ -7,11 +7,11 @@ export const HeroParticles = () => {
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    let width = canvas.width = window.innerWidth;
-    let height = canvas.height = window.innerHeight;
+    let width = (canvas.width = window.innerWidth);
+    let height = (canvas.height = window.innerHeight);
     let animationId: number;
 
     const particles = Array.from({ length: 32 }, () => ({
@@ -30,7 +30,7 @@ export const HeroParticles = () => {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, 2 * Math.PI);
         ctx.fillStyle = `rgba(255,255,255,${p.opacity})`;
-        ctx.shadowColor = '#fff';
+        ctx.shadowColor = "#fff";
         ctx.shadowBlur = 6;
         ctx.fill();
         ctx.shadowBlur = 0;
@@ -59,12 +59,17 @@ export const HeroParticles = () => {
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     }
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
-  return <canvas ref={canvasRef} style={{ width: '100%', height: '100%', display: 'block' }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ width: "100%", height: "100%", display: "block" }}
+    />
+  );
 };
