@@ -24,15 +24,15 @@ const Button = (props: IButtonProps) => {
           }
 
           .btn-base {
-            @apply text-lg font-semibold py-2 px-4;
+            @apply px-4 py-2 text-lg font-semibold;
           }
 
           .btn-xl {
-            @apply font-extrabold text-xl py-4 px-6;
+            @apply px-6 py-4 text-xl font-extrabold;
           }
 
           .btn-primary {
-            @apply text-white bg-primary-500;
+            @apply bg-primary-500 text-white;
           }
 
           .btn-primary:hover {

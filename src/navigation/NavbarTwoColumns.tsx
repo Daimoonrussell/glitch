@@ -11,7 +11,7 @@ const NavbarTwoColumns = (props: INavbarProps) => {
   const [open, setOpen] = useState(false);
   return (
     <nav className="w-full">
-      <div className="flex items-center justify-between px-4 py-2 w-full">
+      <div className="flex w-full items-center justify-between px-4 py-2">
         {/* Logo: zawsze po lewej */}
         <div className="flex-shrink-0">
           <Link href="/">{props.logo}</Link>
@@ -25,7 +25,7 @@ const NavbarTwoColumns = (props: INavbarProps) => {
           >
             {open ? (
               <svg
-                className="w-8 h-8"
+                className="h-8 w-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -39,7 +39,7 @@ const NavbarTwoColumns = (props: INavbarProps) => {
               </svg>
             ) : (
               <svg
-                className="w-8 h-8"
+                className="h-8 w-8"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -56,14 +56,14 @@ const NavbarTwoColumns = (props: INavbarProps) => {
         </div>
         {/* Menu: desktop zawsze widoczne, mobile rozwijane pod navem */}
         <ul
-          className={`navbar hidden sm:flex flex-row items-center gap-x-8 text-xl font-medium text-gray-100 ml-auto`}
+          className={`navbar ml-auto hidden flex-row items-center gap-x-8 text-xl font-medium text-gray-100 sm:flex`}
         >
           {props.children}
         </ul>
       </div>
       {/* Mobile menu: slide-down pod navem */}
       <div
-        className={`sm:hidden w-full overflow-hidden transition-all duration-300 ${
+        className={`w-full overflow-hidden transition-all duration-300 sm:hidden ${
           open ? "max-h-96 py-4" : "max-h-0 py-0"
         }`}
         style={{ background: "rgba(17,17,17,0.98)" }}

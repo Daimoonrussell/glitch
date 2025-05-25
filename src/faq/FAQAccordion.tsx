@@ -13,10 +13,10 @@ export const FAQAccordion = ({ items }: { items: FAQItem[] }) => {
       {items.map((item, idx) => (
         <div
           key={idx}
-          className="bg-gray-900 rounded-xl p-6 shadow text-left border-l-4 border-primary-500 text-white transition-all duration-300"
+          className="rounded-xl border-l-4 border-primary-500 bg-gray-900 p-6 text-left text-white shadow transition-all duration-300"
         >
           <button
-            className="w-full flex justify-between items-center font-bold mb-1 text-primary-300 text-lg focus:outline-none"
+            className="mb-1 flex w-full items-center justify-between text-lg font-bold text-primary-300 focus:outline-none"
             onClick={() => setOpenIndex(openIndex === idx ? null : idx)}
             aria-expanded={openIndex === idx}
           >
@@ -28,10 +28,10 @@ export const FAQAccordion = ({ items }: { items: FAQItem[] }) => {
             </span>
           </button>
           <div
-            className={`overflow-hidden transition-all duration-300 ${openIndex === idx ? "max-h-40 opacity-100 mt-2" : "max-h-0 opacity-0 mt-0"}`}
+            className={`overflow-hidden transition-all duration-300 ${openIndex === idx ? "mt-2 max-h-40 opacity-100" : "mt-0 max-h-0 opacity-0"}`}
             style={{ pointerEvents: openIndex === idx ? "auto" : "none" }}
           >
-            <div className="text-gray-100 text-base pb-2">{item.answer}</div>
+            <div className="pb-2 text-base text-gray-100">{item.answer}</div>
           </div>
         </div>
       ))}
