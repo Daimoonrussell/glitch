@@ -4,6 +4,10 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   background-color: #111827;
@@ -649,6 +653,9 @@ section,
 .drop-shadow-neon {
   filter: drop-shadow(0 0 8px #00ffe7) drop-shadow(0 0 16px #00ffe7)
     drop-shadow(0 0 2px #fff);
+}
+.drop-shadow-glow {
+  filter: drop-shadow(0 0 6px theme('colors.primary.400')) drop-shadow(0 0 12px theme('colors.primary.600'));
 }
 
 /* ANIMACJA BOUNCE-FADE DO EFEKTU SCROLL DOWN */

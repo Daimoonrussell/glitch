@@ -11,102 +11,34 @@ const Hero = () => {
     <Background color="bg-gray-900 noise-bg">
       {/* Tło wideo na całą szerokość monitora, tylko pod hero, nie fixed! */}
       <div className="relative min-h-[600px] w-screen max-w-none overflow-hidden">
-        <video
-          className="absolute inset-0 z-0 size-full min-h-[600px] object-cover"
-          src="/assets/images/hero.webm"
-          autoPlay
-          loop
-          muted
-          playsInline
-          preload="auto"
-          aria-hidden="true"
+        {/* Hero image na całą szerokość */}
+        <img
+          src="/assets/images/hero-mage.jpg"
+          alt="GLITCHSTUDIO hero background"
+          className="absolute inset-0 z-0 size-full object-cover object-center"
+          style={{ minHeight: '600px' }}
+          loading="eager"
+          fetchPriority="high"
+          draggable="false"
         />
-        {/* Subtelne particles nad filmem, pod treścią hero */}
-        {/* HeroParticles usunięte na stałe */}
-        {/* Hero content + navbar na wierzchu */}
-        <div className="relative z-20">
-          {/* Sticky glassmorphism navbar na całą szerokość, content nav ograniczony do max-w-screen-lg */}
-          <nav className="sticky left-0 top-0 z-50 w-screen border-b border-white/10 bg-white/10 shadow-lg backdrop-blur-lg transition-all duration-300">
-            <div className="mx-auto flex w-full max-w-screen-lg items-center justify-between px-2 py-4">
-              <div className="shrink-0">
+        {/* Warstwa gradientu i noise na obrazku */}
+        <div className="pointer-events-none absolute inset-0 z-10 min-h-[600px] bg-gradient-to-tr from-primary-900/80 via-gray-900/70 to-primary-700/80 opacity-90 transition-opacity duration-700" />
+        <div className="noise-bg pointer-events-none absolute inset-0 z-20 min-h-[600px] opacity-10" />
+        {/* Hero content + mobile menu na wierzchu */}
+        <div className="relative z-30">
+          {/* Mobile menu: overlay na całą szerokość, logo sticky na górze */}
+          {open && (
+            <div className="animate-mobile-menu fixed inset-0 z-40 flex flex-col items-center justify-start bg-black/80 pt-0 backdrop-blur-md transition-all duration-300">
+              <div className="sticky left-0 top-0 z-50 flex w-full items-center justify-center border-b border-white/10 bg-black/80 py-4">
                 <Link href="/">
                   <img
                     src="/assets/images/logo.png"
                     alt="GLITCHSTUDIO logo"
-                    className="animate-logo-glitch h-10 w-auto"
+                    className="h-10 w-auto"
                   />
                 </Link>
               </div>
-              <div className="sm:hidden">
-                <button
-                  className="text-primary-400 focus:outline-none"
-                  onClick={() => setOpen(!open)}
-                  aria-label={open ? 'Zamknij menu' : 'Otwórz menu'}
-                >
-                  {open ? (
-                    <svg
-                      className="size-8"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>
-                  ) : (
-                    <svg
-                      className="size-8"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth={2}
-                        d="M4 6h16M4 12h16M4 18h16"
-                      />
-                    </svg>
-                  )}
-                </button>
-              </div>
-              <ul className="navbar ml-auto hidden flex-row items-center gap-x-8 text-base font-semibold tracking-wider text-gray-100 sm:flex">
-                <li>
-                  <Link href="#kim-jestesmy" className="nav-link-ux">
-                    O nas
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#oferta" className="nav-link-ux">
-                    Oferta
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#proces" className="nav-link-ux">
-                    Proces
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#faq" className="nav-link-ux">
-                    FAQ
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#kontakt" className="nav-link-ux">
-                    Kontakt
-                  </Link>
-                </li>
-              </ul>
-            </div>
-          </nav>
-          {/* Mobile menu: overlay na całą szerokość, nie wypycha treści hero */}
-          {open && (
-            <div className="animate-mobile-menu fixed inset-0 z-40 flex flex-col items-center justify-start bg-black/80 pt-24 backdrop-blur-md transition-all duration-300">
-              <ul className="flex flex-col items-center gap-y-8 text-lg font-semibold text-white">
+              <ul className="mt-8 flex flex-col items-center gap-y-8 text-lg font-semibold text-white">
                 <li>
                   <Link href="#kim-jestesmy" onClick={() => setOpen(false)}>
                     O nas
@@ -166,7 +98,7 @@ const Hero = () => {
                 <div className="mb-8 flex flex-col justify-center gap-3 sm:flex-row">
                   <Link href="#kontakt">
                     <div className="group relative">
-                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-700 px-6 py-3 font-bold text-white shadow-xl backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-400/40 group-hover:scale-105 group-hover:border-primary-300 will-change-transform active:scale-95">
+                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gradient-to-r from-gray-800 via-gray-900 to-gray-700 px-6 py-3 font-bold text-white shadow-xl backdrop-blur-md transition-all duration-300 will-change-transform focus:outline-none focus:ring-4 focus:ring-primary-400/40 active:scale-95 group-hover:scale-105 group-hover:border-primary-300">
                         <span className="relative z-10">
                           Zacznijmy zakłócenie
                         </span>
@@ -179,7 +111,7 @@ const Hero = () => {
                   </Link>
                   <Link href="#oferta">
                     <div className="group relative">
-                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gray-900/80 px-6 py-3 font-bold text-primary-300 shadow-lg backdrop-blur-md transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-primary-400/40 group-hover:scale-105 group-hover:border-primary-300 group-hover:bg-gray-800/90 will-change-transform active:scale-95">
+                      <div className="btn btn-glitch group-hover:shadow-neon relative overflow-hidden rounded-xl border-2 border-primary-400/60 bg-gray-900/80 px-6 py-3 font-bold text-primary-300 shadow-lg backdrop-blur-md transition-all duration-300 will-change-transform focus:outline-none focus:ring-4 focus:ring-primary-400/40 active:scale-95 group-hover:scale-105 group-hover:border-primary-300 group-hover:bg-gray-800/90">
                         <span className="relative z-10">
                           Poznaj naszą ofertę
                         </span>
