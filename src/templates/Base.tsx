@@ -11,11 +11,14 @@ import { VerticalFeatures } from './VerticalFeatures';
 const Base = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="text-gray-600 antialiased">
+    <div className="overflow-x-hidden text-gray-600 antialiased">
       <Meta title={AppConfig.title} description={AppConfig.description} />
       {/* Sticky navbar na CAŁEJ stronie */}
-      <div className="sticky left-0 top-0 z-50 w-full border-b border-white/10 bg-white/30 shadow-lg backdrop-blur-lg transition-all duration-300">
-        <div className="mx-auto flex w-full max-w-screen-lg items-center justify-between px-2 py-4">
+      <div
+        className="glass fixed left-0 top-0 z-50 w-full rounded-none border-b border-white/10 shadow-lg backdrop-blur-lg transition-all duration-300"
+        style={{ background: 'rgba(17, 24, 39, 0.82)' }}
+      >
+        <div className="mx-auto flex w-full max-w-screen-lg items-center justify-between p-4">
           <div className="shrink-0">
             <Link href="/">
               <img
