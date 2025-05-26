@@ -10,23 +10,39 @@ const Hero = () => {
   return (
     <Background color="bg-gray-900 noise-bg">
       {/* Tło wideo na całą szerokość monitora, tylko pod hero, nie fixed! */}
-      <div className="relative flex min-h-screen w-full items-center justify-center overflow-hidden">
+      <div
+        className="hero-no-scroll relative flex w-full items-center justify-center overflow-hidden"
+        style={{
+          height: '100dvh',
+          minHeight: '100dvh',
+          boxSizing: 'border-box',
+        }}
+      >
         <HeroParticles />
         {/* Hero image na całą szerokość */}
         <img
           src="/assets/images/hero-mage.jpg"
           alt="GLITCHSTUDIO hero background"
-          className="absolute inset-0 z-0 size-full object-cover object-center"
-          style={{ minHeight: '100vh', height: '100vh' }}
+          className="absolute inset-0 z-0 w-full object-cover object-center"
+          style={{ height: '100%', minHeight: '100%' }}
           loading="eager"
           fetchPriority="high"
           draggable="false"
         />
         {/* Warstwa gradientu i noise POD tekstem */}
-        <div className="pointer-events-none absolute inset-0 z-10 min-h-[600px] w-full bg-gradient-to-tr from-primary-900/80 via-gray-900/70 to-primary-700/80 opacity-90 transition-opacity duration-700" />
-        <div className="noise-bg pointer-events-none absolute inset-0 z-20 min-h-[600px] w-full opacity-10" />
+        <div
+          className="pointer-events-none absolute inset-0 z-10 w-full bg-gradient-to-tr from-primary-900/80 via-gray-900/70 to-primary-700/80 opacity-90 transition-opacity duration-700"
+          style={{ height: '100%' }}
+        />
+        <div
+          className="noise-bg pointer-events-none absolute inset-0 z-20 w-full opacity-10"
+          style={{ height: '100%' }}
+        />
         {/* Hero content */}
-        <div className="relative z-30 flex h-screen min-h-[600px] w-full flex-col items-center justify-center text-center">
+        <div
+          className="relative z-30 flex w-full flex-col items-center justify-center text-center"
+          style={{ height: '100%' }}
+        >
           {/* Mobile menu: overlay na całą szerokość, logo sticky na górze */}
           {open && (
             <div className="animate-mobile-menu fixed inset-0 z-40 flex flex-col items-center justify-start bg-black/80 pt-0 backdrop-blur-md transition-all duration-300">

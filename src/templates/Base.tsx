@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 import { Meta } from '../layout/Meta';
 import { AppConfig } from '../utils/AppConfig';
-import { Banner } from './Banner';
 import { Footer } from './Footer';
 import { Hero } from './Hero';
 import { VerticalFeatures } from './VerticalFeatures';
@@ -11,11 +10,18 @@ import { VerticalFeatures } from './VerticalFeatures';
 const Base = () => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="overflow-x-hidden text-gray-600 antialiased">
+    <div
+      className="overflow-x-hidden text-gray-600 antialiased"
+      style={{
+        overflowY: 'auto',
+        overscrollBehavior: 'none',
+        height: '100dvh',
+      }}
+    >
       <Meta title={AppConfig.title} description={AppConfig.description} />
       {/* Sticky navbar na CAŁEJ stronie */}
       <div
-        className="glass fixed left-0 top-0 z-50 w-full rounded-none border-b border-white/10 shadow-lg backdrop-blur-lg transition-all duration-300"
+        className="glass fixed left-0 top-0 z-50 w-full rounded-none shadow-lg backdrop-blur-lg transition-all duration-300"
         style={{ background: 'rgba(17, 24, 39, 0.82)' }}
       >
         <div className="mx-auto flex w-full max-w-screen-lg items-center justify-between p-4">
@@ -167,7 +173,41 @@ const Base = () => {
       )}
       <Hero />
       <VerticalFeatures />
-      <Banner />
+      {/* Kontakt - tylko formularz, bez nagłówka i opisu */}
+      <section
+        id="kontakt"
+        className="flex flex-col items-center justify-center bg-gray-950 px-4 py-16 text-center"
+      >
+        <form className="flex w-full max-w-screen-lg flex-col gap-6 rounded-2xl border border-primary-800 bg-gray-900/90 p-8 shadow-xl">
+          <input
+            type="text"
+            name="name"
+            placeholder="Imię i nazwisko"
+            className="rounded-lg border border-primary-700 bg-gray-900/80 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Twój e-mail"
+            className="rounded-lg border border-primary-700 bg-gray-900/80 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            required
+          />
+          <textarea
+            name="message"
+            placeholder="Opisz swój pomysł lub zapytanie..."
+            rows={5}
+            className="rounded-lg border border-primary-700 bg-gray-900/80 px-4 py-3 text-white placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400"
+            required
+          />
+          <button
+            type="submit"
+            className="btn btn-glitch rounded-xl bg-gradient-to-r from-primary-600 via-primary-500 to-primary-400 py-3 font-bold text-white shadow-lg transition-transform hover:scale-105"
+          >
+            Wyślij wiadomość
+          </button>
+        </form>
+      </section>
       <Footer />
     </div>
   );
