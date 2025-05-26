@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 64px; /* Dostosuj do wysokości Twojego navbaru, np. 64px = h-16 */
 }
 
 html,

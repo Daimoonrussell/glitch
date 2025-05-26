@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { Meta } from '../layout/Meta';
 import { AppConfig } from '../utils/AppConfig';
@@ -9,6 +9,41 @@ import { VerticalFeatures } from './VerticalFeatures';
 
 const Base = () => {
   const [open, setOpen] = useState(false);
+
+  // Force smooth scroll on hash change (for onepage navigation)
+  useEffect(() => {
+    const handler = (e: HashChangeEvent) => {
+      if (window.location.hash) {
+        const el = document.getElementById(
+          window.location.hash.replace('#', ''),
+        );
+        if (el) {
+          e.preventDefault?.();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+    };
+    window.addEventListener('hashchange', handler, false);
+    return () => window.removeEventListener('hashchange', handler, false);
+  }, []);
+  useEffect(() => {
+    const handleAnchorClick = (e: MouseEvent) => {
+      const anchor = (e.target as HTMLElement).closest('a[href^="#"]');
+      if (anchor) {
+        const id = anchor.getAttribute('href')!.replace('#', '');
+        const el = document.getElementById(id);
+        if (el) {
+          e.preventDefault();
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          // Optionally update hash in URL
+          window.history.pushState(null, '', `#${id}`);
+          if (typeof setOpen === 'function') setOpen(false);
+        }
+      }
+    };
+    document.addEventListener('click', handleAnchorClick);
+    return () => document.removeEventListener('click', handleAnchorClick);
+  }, []);
   return (
     <div
       className="overflow-x-hidden text-gray-600 antialiased"
@@ -73,7 +108,7 @@ const Base = () => {
           </div>
           <ul className="navbar ml-auto hidden flex-row items-center gap-x-8 text-base font-semibold tracking-wider text-gray-100 sm:flex">
             <li>
-              <Link
+              <a
                 href="#kim-jestesmy"
                 className="nav-link-ux group relative overflow-hidden"
               >
@@ -81,10 +116,10 @@ const Base = () => {
                   O nas
                 </span>
                 <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-gradient-to-r from-primary-400 to-primary-600 transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href="#oferta"
                 className="nav-link-ux group relative overflow-hidden"
               >
@@ -92,10 +127,10 @@ const Base = () => {
                   Oferta
                 </span>
                 <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-gradient-to-r from-primary-400 to-primary-600 transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href="#proces"
                 className="nav-link-ux group relative overflow-hidden"
               >
@@ -103,10 +138,10 @@ const Base = () => {
                   Proces
                 </span>
                 <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-gradient-to-r from-primary-400 to-primary-600 transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href="#faq"
                 className="nav-link-ux group relative overflow-hidden"
               >
@@ -114,10 +149,10 @@ const Base = () => {
                   FAQ
                 </span>
                 <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-gradient-to-r from-primary-400 to-primary-600 transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </a>
             </li>
             <li>
-              <Link
+              <a
                 href="#kontakt"
                 className="nav-link-ux group relative overflow-hidden"
               >
@@ -125,7 +160,7 @@ const Base = () => {
                   Kontakt
                 </span>
                 <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 bg-gradient-to-r from-primary-400 to-primary-600 transition-transform duration-300 group-hover:scale-x-100" />
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
@@ -144,29 +179,29 @@ const Base = () => {
           </div>
           <ul className="mt-8 flex flex-col items-center gap-y-8 text-lg font-semibold text-white">
             <li>
-              <Link href="#kim-jestesmy" onClick={() => setOpen(false)}>
+              <a href="#kim-jestesmy" onClick={() => setOpen(false)}>
                 O nas
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="#oferta" onClick={() => setOpen(false)}>
+              <a href="#oferta" onClick={() => setOpen(false)}>
                 Oferta
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="#proces" onClick={() => setOpen(false)}>
+              <a href="#proces" onClick={() => setOpen(false)}>
                 Proces
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="#faq" onClick={() => setOpen(false)}>
+              <a href="#faq" onClick={() => setOpen(false)}>
                 FAQ
-              </Link>
+              </a>
             </li>
             <li>
-              <Link href="#kontakt" onClick={() => setOpen(false)}>
+              <a href="#kontakt" onClick={() => setOpen(false)}>
                 Kontakt
-              </Link>
+              </a>
             </li>
           </ul>
         </div>
