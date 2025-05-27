@@ -39,10 +39,7 @@ const Hero = () => {
           style={{ height: '100%' }}
         />
         {/* Hero content */}
-        <div
-          className="relative z-30 flex w-full flex-col items-center justify-center text-center"
-          style={{ height: '100%' }}
-        >
+        <div className="absolute inset-0 z-30 flex w-full flex-col">
           {/* Mobile menu: overlay na całą szerokość, logo sticky na górze */}
           {open && (
             <div className="animate-mobile-menu fixed inset-0 z-40 flex flex-col items-center justify-start bg-black/80 pt-0 backdrop-blur-md transition-all duration-300">
@@ -84,20 +81,31 @@ const Hero = () => {
               </ul>
             </div>
           )}
-          {/* Hero content */}
-          <header className="mx-auto flex w-full flex-col items-center justify-center text-center">
+          {/* Hero header: środek ekranu */}
+          <header className="flex w-full flex-1 flex-col items-center justify-center text-center">
             <div className="mb-4 flex flex-col items-center justify-center">
-              {/* Logo usunięte całkowicie z hero */}
+              {/* Responsive headline: 3 lines on mobile, 2 lines on desktop */}
               <span
                 className="hero-brutal animate-hero-glitch-gradient mt-2 block text-5xl font-extrabold uppercase leading-tight tracking-tight drop-shadow-lg md:text-6xl md:leading-[1.05]"
                 style={{ letterSpacing: '0.04em', color: '#fff' }}
               >
-                <span className="block">Nowoczesne</span>
-                <span className="block">digital-native</span>
+                {/* Mobile: 3 lines, Desktop: 2 lines */}
+                <span className="block md:hidden">
+                  Nowoczesne
+                  <br />
+                  digital
+                  <br />
+                  native
+                </span>
+                <span className="hidden md:block">
+                  Nowoczesne
+                  <br />
+                  digital-native
+                </span>
               </span>
             </div>
             <div
-              className="mb-4 text-xl font-semibold tracking-widest text-primary-300"
+              className="mx-auto mb-4 max-w-xs text-base font-semibold tracking-widest text-primary-300 md:max-w-none md:text-xl"
               style={{ fontFamily: 'Syne, Arial, Helvetica, sans-serif' }}
             >
               Design, który pracuje. Nie tylko wygląda.
@@ -126,39 +134,39 @@ const Hero = () => {
                 </div>
               </Link>
             </div>
-            {/* Animated V-shaped arrow with scroll-to-next-section */}
-            <button
-              type="button"
-              aria-label="Przewiń w dół"
-              onClick={() => {
-                const next =
-                  document.getElementById('oferta') ||
-                  document.querySelector('section, .section');
-                if (next) {
-                  next.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-              }}
-              className="mt-8 flex cursor-pointer flex-col items-center border-none bg-transparent focus:outline-none"
-            >
-              <span className="animate-bounce-slow block">
-                <svg
-                  width="48"
-                  height="32"
-                  viewBox="0 0 48 32"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    d="M8 8L24 24L40 8"
-                    stroke="#60A5FA"
-                    strokeWidth="4"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
-              </span>
-            </button>
           </header>
+          {/* Strzałka na samym dole hero */}
+          <button
+            type="button"
+            aria-label="Przewiń w dół"
+            onClick={() => {
+              const next =
+                document.getElementById('oferta') ||
+                document.querySelector('section, .section');
+              if (next) {
+                next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+            }}
+            className="absolute bottom-8 left-1/2 flex -translate-x-1/2 cursor-pointer flex-col items-center border-none bg-transparent focus:outline-none"
+          >
+            <span className="animate-bounce-slow block">
+              <svg
+                width="48"
+                height="32"
+                viewBox="0 0 48 32"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M8 8L24 24L40 8"
+                  stroke="#60A5FA"
+                  strokeWidth="4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+            </span>
+          </button>
         </div>
       </div>
     </Background>

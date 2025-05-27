@@ -1,12 +1,75 @@
+import {
+  ChatBubbleLeftRightIcon,
+  Cog6ToothIcon,
+  DevicePhoneMobileIcon,
+  EnvelopeIcon,
+  GlobeAltIcon,
+  LightBulbIcon,
+  MagnifyingGlassIcon,
+  PuzzlePieceIcon,
+  QuestionMarkCircleIcon,
+  SparklesIcon,
+  UsersIcon,
+  WrenchScrewdriverIcon,
+} from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
 
 import { FAQAccordion } from '../faq/FAQAccordion';
 import { Section } from '../layout/Section';
 
+const iconClass = 'mb-2 h-8 w-8 text-primary-300';
+const sectionIconClass =
+  'inline-block h-7 w-7 align-middle text-primary-400 mr-2';
+
+const sectionTitles = {
+  kim: (
+    <>
+      <UsersIcon className={sectionIconClass} />
+      Kim jesteśmy?
+    </>
+  ),
+  podejscie: (
+    <>
+      <WrenchScrewdriverIcon className={sectionIconClass} />
+      Nasze podejście
+    </>
+  ),
+  uslugi: (
+    <>
+      <PuzzlePieceIcon className={sectionIconClass} />
+      Co robimy?
+    </>
+  ),
+  zaufali: (
+    <>
+      <SparklesIcon className={sectionIconClass} />
+      Zaufali nam
+    </>
+  ),
+  proces: (
+    <>
+      <Cog6ToothIcon className={sectionIconClass} />
+      Jak pracujemy?
+    </>
+  ),
+  faq: (
+    <>
+      <QuestionMarkCircleIcon className={sectionIconClass} />
+      Często zadawane pytania
+    </>
+  ),
+  kontakt: (
+    <>
+      <EnvelopeIcon className={sectionIconClass} />
+      Kontakt
+    </>
+  ),
+};
+
 const VerticalFeatures = () => (
   <>
     {/* Kim jesteśmy? */}
-    <Section yPadding="py-16" title="🔥 Kim jesteśmy?">
+    <Section yPadding="py-16" title={sectionTitles.kim}>
       <div
         id="kim-jestesmy"
         className="animate-fade-in-section mx-auto flex max-w-4xl flex-col-reverse items-center gap-8 px-4 text-center md:flex-row md:gap-16"
@@ -43,31 +106,33 @@ const VerticalFeatures = () => (
     </Section>
 
     {/* Nasze podejście */}
-    <Section yPadding="py-16" title="🛠️ Nasze podejście">
+    <Section yPadding="py-16" title={sectionTitles.podejscie}>
       <div
         className="animate-fade-in-section mx-auto grid max-w-4xl grid-cols-1 gap-6 px-4 text-center sm:grid-cols-2"
         style={{ animationDelay: '0.1s' }}
       >
         <div className="flex flex-col items-center rounded-xl border-l-4 border-primary-500 bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-lg">
-          <span className="font-bold text-primary-300">💡 Słuchamy</span>
+          <LightBulbIcon className={iconClass} />
+          <span className="font-bold text-primary-300">Słuchamy</span>
           <p className="mt-2 text-gray-200">
             Najpierw poznajemy Ciebie i Twoją markę
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border-l-4 border-primary-500 bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-lg">
-          <span className="font-bold text-primary-300">
-            🎯 Koncentrujemy się
-          </span>
+          <Cog6ToothIcon className={iconClass} />
+          <span className="font-bold text-primary-300">Koncentrujemy się</span>
           <p className="mt-2 text-gray-200">Każda decyzja ma cel</p>
         </div>
         <div className="flex flex-col items-center rounded-xl border-l-4 border-primary-500 bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-lg">
-          <span className="font-bold text-primary-300">🚀 Działamy szybko</span>
+          <SparklesIcon className={iconClass} />
+          <span className="font-bold text-primary-300">Działamy szybko</span>
           <p className="mt-2 text-gray-200">
             Prototypujemy, testujemy, poprawiamy
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border-l-4 border-primary-500 bg-gradient-to-br from-gray-900 to-gray-800 p-6 text-white shadow-lg">
-          <span className="font-bold text-primary-300">🎨 Dowozimy</span>
+          <PuzzlePieceIcon className={iconClass} />
+          <span className="font-bold text-primary-300">Dowozimy</span>
           <p className="mt-2 text-gray-200">Bez chaosu, bez bullshitu</p>
         </div>
       </div>
@@ -82,14 +147,14 @@ const VerticalFeatures = () => (
     </Section>
 
     {/* Usługi */}
-    <Section yPadding="py-16" title="🧩 Co robimy?">
+    <Section yPadding="py-16" title={sectionTitles.uslugi}>
       <div
         id="oferta"
         className="animate-fade-in-section mx-auto grid max-w-5xl grid-cols-1 gap-8 px-4 text-center md:grid-cols-3"
         style={{ animationDelay: '0.2s' }}
       >
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
-          <div className="mb-2 text-3xl">🧠</div>
+          <LightBulbIcon className={iconClass} />
           <h3 className="mb-2 text-xl font-bold text-primary-200">
             Strategie marki
           </h3>
@@ -99,7 +164,7 @@ const VerticalFeatures = () => (
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
-          <div className="mb-2 text-3xl">🎨</div>
+          <SparklesIcon className={iconClass} />
           <h3 className="mb-2 text-xl font-bold text-primary-200">
             Branding i identyfikacja
           </h3>
@@ -109,7 +174,7 @@ const VerticalFeatures = () => (
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
-          <div className="mb-2 text-3xl">🖥️</div>
+          <DevicePhoneMobileIcon className={iconClass} />
           <h3 className="mb-2 text-xl font-bold text-primary-200">
             UX/UI design
           </h3>
@@ -119,7 +184,7 @@ const VerticalFeatures = () => (
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
-          <div className="mb-2 text-3xl">📢</div>
+          <ChatBubbleLeftRightIcon className={iconClass} />
           <h3 className="mb-2 text-xl font-bold text-primary-200">
             Komunikacja i copywriting
           </h3>
@@ -129,7 +194,7 @@ const VerticalFeatures = () => (
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
-          <div className="mb-2 text-3xl">🌐</div>
+          <GlobeAltIcon className={iconClass} />
           <h3 className="mb-2 text-xl font-bold text-primary-200">
             No-code i webflow
           </h3>
@@ -139,7 +204,7 @@ const VerticalFeatures = () => (
           </p>
         </div>
         <div className="flex flex-col items-center rounded-xl border border-primary-700 bg-gradient-to-br from-primary-800 to-gray-900 p-6 text-center text-white shadow-lg">
-          <div className="mb-2 text-3xl">🔍</div>
+          <MagnifyingGlassIcon className={iconClass} />
           <h3 className="mb-2 text-xl font-bold text-primary-200">
             Audyt & optymalizacja
           </h3>
@@ -152,7 +217,7 @@ const VerticalFeatures = () => (
     </Section>
 
     {/* Zaufali nam */}
-    <Section yPadding="py-16" title="🤝 Zaufali nam">
+    <Section yPadding="py-16" title={sectionTitles.zaufali}>
       <div
         className="animate-fade-in-section mx-auto max-w-3xl px-4 text-center"
         style={{ animationDelay: '0.25s' }}
@@ -180,7 +245,7 @@ const VerticalFeatures = () => (
     </Section>
 
     {/* Proces */}
-    <Section yPadding="py-16" title="⚙️ Jak pracujemy?">
+    <Section yPadding="py-16" title={sectionTitles.proces}>
       <div
         id="proces"
         className="animate-fade-in-section mx-auto grid max-w-4xl grid-cols-1 items-stretch gap-6 px-4 text-center md:grid-cols-5"
@@ -241,7 +306,7 @@ const VerticalFeatures = () => (
     </Section>
 
     {/* FAQ */}
-    <Section yPadding="py-16" title="❓ Często zadawane pytania">
+    <Section yPadding="py-16" title={sectionTitles.faq}>
       <div
         id="faq"
         className="animate-fade-in-section mx-auto grid max-w-3xl grid-cols-1 gap-6 px-4 text-center"
@@ -279,7 +344,7 @@ const VerticalFeatures = () => (
     </Section>
 
     {/* Kontakt */}
-    <Section yPadding="py-16" title="📬 Kontakt">
+    <Section yPadding="py-16" title={sectionTitles.kontakt}>
       <div
         id="kontakt"
         className="animate-fade-in-section mx-auto max-w-2xl px-4 text-center"

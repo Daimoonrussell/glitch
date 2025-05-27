@@ -3,8 +3,8 @@ import type { ReactNode } from 'react';
 import { useInView } from 'react-intersection-observer';
 
 type ISectionProps = {
-  title?: string;
-  description?: string;
+  title?: React.ReactNode;
+  description?: React.ReactNode;
   yPadding?: string;
   children: ReactNode;
 };
