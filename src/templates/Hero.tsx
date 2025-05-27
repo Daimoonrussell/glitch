@@ -126,6 +126,38 @@ const Hero = () => {
                 </div>
               </Link>
             </div>
+            {/* Animated V-shaped arrow with scroll-to-next-section */}
+            <button
+              type="button"
+              aria-label="Przewiń w dół"
+              onClick={() => {
+                const next =
+                  document.getElementById('oferta') ||
+                  document.querySelector('section, .section');
+                if (next) {
+                  next.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }}
+              className="mt-8 flex cursor-pointer flex-col items-center border-none bg-transparent focus:outline-none"
+            >
+              <span className="animate-bounce-slow block">
+                <svg
+                  width="48"
+                  height="32"
+                  viewBox="0 0 48 32"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M8 8L24 24L40 8"
+                    stroke="#60A5FA"
+                    strokeWidth="4"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                </svg>
+              </span>
+            </button>
           </header>
         </div>
       </div>
@@ -134,3 +166,14 @@ const Hero = () => {
 };
 
 export { Hero };
+
+/* Add this to global.css or as a style tag if not present: */
+/*
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(16px); }
+}
+.animate-bounce-slow {
+  animation: bounce-slow 1.6s infinite;
+}
+*/

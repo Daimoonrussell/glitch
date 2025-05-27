@@ -12,7 +12,7 @@ const Footer = () => (
               alt="GLITCHSTUDIO logo"
               className="h-10 w-auto"
             />
-            <span className="text-2xl font-bold tracking-tight text-white">
+            <span className="hidden text-2xl font-bold tracking-tight text-white md:inline">
               GLITCHSTUDIO
             </span>
           </span>
@@ -23,8 +23,8 @@ const Footer = () => (
         </span>
       </div>
       {/* Menu */}
-      <nav>
-        <ul className="flex flex-col gap-4 text-lg font-medium md:flex-row md:gap-8">
+      <nav className="w-full md:w-auto">
+        <ul className="hidden flex-row gap-8 text-lg font-medium md:flex">
           <li>
             <Link href="/">Strona główna</Link>
           </li>

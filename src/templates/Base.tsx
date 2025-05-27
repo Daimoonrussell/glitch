@@ -5,7 +5,7 @@ import { Meta } from '../layout/Meta';
 import { AppConfig } from '../utils/AppConfig';
 import { Footer } from './Footer';
 import { Hero } from './Hero';
-import { VerticalFeatures } from './VerticalFeatures';
+import { ScrollToTopButton, VerticalFeatures } from './VerticalFeatures';
 
 const Base = () => {
   const [open, setOpen] = useState(false);
@@ -243,6 +243,7 @@ const Base = () => {
           </button>
         </form>
       </section>
+      <ScrollToTopButton />
       <Footer />
     </div>
   );

@@ -1,3 +1,5 @@
+import { useEffect, useState } from 'react';
+
 import { FAQAccordion } from '../faq/FAQAccordion';
 import { Section } from '../layout/Section';
 
@@ -7,23 +9,36 @@ const VerticalFeatures = () => (
     <Section yPadding="py-16" title="🔥 Kim jesteśmy?">
       <div
         id="kim-jestesmy"
-        className="animate-fade-in-section mx-auto max-w-3xl px-4 text-center"
+        className="animate-fade-in-section mx-auto flex max-w-4xl flex-col-reverse items-center gap-8 px-4 text-center md:flex-row md:gap-16"
         style={{ animationDelay: '0.05s' }}
       >
-        <p className="mb-4 text-xl text-white">
-          <span className="font-bold text-primary-400">GLITCHSTUDIO</span> to
-          kolektyw projektantów, strategów i ludzi z obsesją na punkcie jakości.
-          <br />
-          <span className="text-primary-300">
+        {/* Tekst */}
+        <div className="flex flex-1 flex-col items-center text-center">
+          <h2 className="mb-4 text-3xl font-extrabold text-white md:text-4xl">
+            GLITCHSTUDIO
+          </h2>
+          <div className="mb-4 text-lg font-semibold text-primary-300">
+            Kolektyw projektantów, strategów i ludzi z obsesją na punkcie
+            jakości.
+          </div>
+          <div className="mb-4 text-base text-gray-200">
             Nie jesteśmy korpo. Nie jesteśmy agencją &quot;full service&quot;.
-          </span>
-          <br />
-          Jesteśmy zakłóceniem w nudnym świecie komunikacji wizualnej.
-        </p>
-        <p className="mb-2 text-lg text-gray-300">
-          Projektujemy bez szablonów, myślimy bez filtrów. Każda marka, z którą
-          pracujemy, to nowy świat do odkrycia.
-        </p>
+            Jesteśmy zakłóceniem w nudnym świecie komunikacji wizualnej.
+          </div>
+          <div className="text-base text-gray-400">
+            Projektujemy bez szablonów, myślimy bez filtrów. Każda marka, z
+            którą pracujemy, to nowy świat do odkrycia.
+          </div>
+        </div>
+        {/* Zdjęcie na szerokość kontentu na mobile */}
+        <div className="flex w-full flex-1 items-center justify-center">
+          <img
+            src="/assets/images/about-us-img.jpg"
+            alt="GLITCHSTUDIO zespół"
+            className="h-auto w-full max-w-[400px] rounded-2xl border-2 border-primary-700 object-cover shadow-xl md:size-[400px]"
+            loading="lazy"
+          />
+        </div>
       </div>
     </Section>
 
@@ -285,7 +300,125 @@ const VerticalFeatures = () => (
         </div>
       </div>
     </Section>
+    {/* <ScrollToTopButton /> removed: now rendered in Base.tsx for global visibility */}
   </>
 );
 
 export { VerticalFeatures };
+
+export const ScrollToTopButton = () => {
+  // Sprawdź, gdzie jest scroll: window czy główny kontener
+  const [visible, setVisible] = useState(false);
+  // Użyj useState + useEffect do detekcji szerokości okna (SSR safe)
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsMobile(window.innerWidth <= 600);
+    check();
+    window.addEventListener('resize', check);
+    return () => window.removeEventListener('resize', check);
+  }, []);
+
+  useEffect(() => {
+    // Spróbuj znaleźć główny kontener z overflow
+    let scrollContainer: Window | HTMLElement = window;
+    const mainDiv = document.querySelector(
+      'body > div#__next > div',
+    ) as HTMLElement | null;
+    if (mainDiv && mainDiv.scrollHeight > mainDiv.clientHeight + 10) {
+      scrollContainer = mainDiv;
+    }
+    const onScroll = () => {
+      const scrollY =
+        scrollContainer === window
+          ? window.scrollY
+          : (scrollContainer as HTMLElement).scrollTop;
+      setVisible(scrollY > 200);
+    };
+    if (scrollContainer === window) {
+      window.addEventListener('scroll', onScroll);
+    } else {
+      (scrollContainer as HTMLElement).addEventListener('scroll', onScroll);
+    }
+    // Wywołaj raz na start
+    onScroll();
+    return () => {
+      if (scrollContainer === window) {
+        window.removeEventListener('scroll', onScroll);
+      } else {
+        (scrollContainer as HTMLElement).removeEventListener(
+          'scroll',
+          onScroll,
+        );
+      }
+    };
+  }, []);
+
+  const handleClick = () => {
+    const mainDiv = document.querySelector(
+      'body > div#__next > div',
+    ) as HTMLElement | null;
+    if (mainDiv && mainDiv.scrollHeight > mainDiv.clientHeight + 10) {
+      mainDiv.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  };
+
+  if (!visible) return null;
+
+  return (
+    <button
+      onClick={handleClick}
+      aria-label="Scroll to top"
+      style={{
+        zIndex: 9999999,
+        position: 'fixed',
+        bottom: isMobile ? '12px' : '20px',
+        right: isMobile ? '12px' : '20px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: isMobile ? '44px' : '56px',
+        height: isMobile ? '44px' : '56px',
+        background: 'transparent',
+        border: 'none',
+        borderRadius: '50%',
+        cursor: 'pointer',
+        boxShadow: isMobile
+          ? '0 1px 4px 0 rgba(0,0,0,0.13)'
+          : '0 2px 8px 0 rgba(0,0,0,0.13)', // mniej mocny
+      }}
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === 'Enter' || e.key === ' ') handleClick();
+      }}
+    >
+      <span
+        style={{
+          display: 'block',
+          filter: 'drop-shadow(0 1px 4px #38bdf888) drop-shadow(0 0 1px #fff)',
+          transition: 'filter 0.2s',
+          animation: 'bounce-up 1.2s infinite',
+        }}
+      >
+        <svg
+          width={isMobile ? 24 : 32}
+          height={isMobile ? 24 : 32}
+          viewBox="0 0 28 28"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+          style={{ display: 'block' }}
+        >
+          <path
+            d="M7 18L14 11L21 18"
+            stroke="#fff"
+            strokeWidth={isMobile ? 2 : 3}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+      </span>
+    </button>
+  );
+};

@@ -21,22 +21,26 @@ const Section = (props: ISectionProps) => {
       initial={{ opacity: 0, y: 64 }}
       animate={inView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.7, ease: 'easeOut' }}
-      className={`mx-auto max-w-screen-lg px-3 ${
-        props.yPadding ? props.yPadding : 'py-16'
-      }`}
+      className={`mx-auto max-w-screen-lg px-3 py-8 md:py-24 ${
+        props.yPadding ? props.yPadding : ''
+      } flex flex-col items-center`}
     >
       {(props.title || props.description) && (
-        <div className="mb-12 text-center">
+        <div className="mb-8 flex w-full flex-col items-center text-center md:mb-14">
           {props.title && (
-            <h2 className="text-4xl font-bold text-white">{props.title}</h2>
+            <h2 className="xs:text-3xl w-full text-center text-2xl font-extrabold tracking-tight text-white md:text-5xl">
+              {props.title}
+            </h2>
           )}
           {props.description && (
-            <div className="mt-4 text-xl md:px-20">{props.description}</div>
+            <div className="mt-2 w-full px-2 text-center text-base text-gray-300 md:px-20 md:text-xl">
+              {props.description}
+            </div>
           )}
+          <div className="mx-auto mb-6 mt-4 h-1 w-20 rounded-full bg-gradient-to-r from-primary-400 via-primary-600 to-primary-400 opacity-80 md:w-24" />
         </div>
       )}
-
-      {props.children}
+      <div className="flex w-full flex-col items-center">{props.children}</div>
     </motion.div>
   );
 };
